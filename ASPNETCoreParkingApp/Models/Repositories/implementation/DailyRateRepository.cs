@@ -40,5 +40,11 @@ namespace ASPNETCoreParkingApp.Models.Repositories.implementation
         {
             return _db.SaveChanges();
         }
+
+        public void UpdateDailyRate(DailyRate dailyRate)
+        {
+            _db.DailyRates.Update(dailyRate);
+            _db.SaveChanges();
+        }
     }
 }

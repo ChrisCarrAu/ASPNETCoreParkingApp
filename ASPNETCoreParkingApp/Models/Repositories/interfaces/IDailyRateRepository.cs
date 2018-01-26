@@ -8,6 +8,7 @@ namespace ASPNETCoreParkingApp.Models.Repositories.interfaces
         void DeleteDailyRate(int id);
         DailyRate GetDailyRateByID(int id);
         IEnumerable<DailyRate> GetAllDailyRates();
+        void UpdateDailyRate(DailyRate dailyRate);
         int SaveChanges();
     }
 }

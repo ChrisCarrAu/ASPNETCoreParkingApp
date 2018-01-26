@@ -40,5 +40,11 @@ namespace ASPNETCoreParkingApp.Models.Repositories.implementation
         {
             return _db.SaveChanges();
         }
+
+        public void UpdateFlatParkingRate(FlatParkingRate flatParkingRate)
+        {
+            _db.FlatParkingRates.Update(flatParkingRate);
+            _db.SaveChanges();
+        }
     }
 }

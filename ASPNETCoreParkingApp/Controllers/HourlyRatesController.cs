@@ -86,7 +86,7 @@ namespace ASPNETCoreParkingApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.SaveChanges();
+                _repository.UpdateHourlyRate(hourlyRate);
                 return RedirectToAction("Index");
             }
             return View(hourlyRate);

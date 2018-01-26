@@ -36,6 +36,12 @@ namespace ASPNETCoreParkingApp.Models.Repositories.implementation
             return _db.HourlyRates.FirstOrDefault(d => d.ID == id);
         }
 
+        public void UpdateHourlyRate(HourlyRate hourlyRate)
+        {
+            _db.HourlyRates.Update(hourlyRate);
+            _db.SaveChanges();
+        }
+
         public int SaveChanges()
         {
             return _db.SaveChanges();

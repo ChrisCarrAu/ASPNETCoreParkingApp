@@ -8,6 +8,7 @@ namespace ASPNETCoreParkingApp.Models.Repositories.interfaces
         void DeleteFlatParkingRate(int id);
         FlatParkingRate GetFlatParkingRateByID(int id);
         IEnumerable<FlatParkingRate> GetAllFlatParkingRates();
+        void UpdateFlatParkingRate(FlatParkingRate flatParkingRate);
         int SaveChanges();
     }
 }

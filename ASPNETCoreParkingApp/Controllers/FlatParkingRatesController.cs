@@ -89,7 +89,7 @@ namespace ASPNETCoreParkingApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repository.SaveChanges();
+                _repository.UpdateFlatParkingRate(flatParkingRate);
                 return RedirectToAction("Index");
             }
             return View(flatParkingRate);
