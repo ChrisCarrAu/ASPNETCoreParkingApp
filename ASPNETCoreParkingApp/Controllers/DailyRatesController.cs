@@ -1,9 +1,8 @@
 ﻿using ASPNETCoreParkingApp.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using ASPNETCoreParkingApp.Models.Repositories.implementation;
 using ASPNETCoreParkingApp.Models.Repositories.interfaces;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace ASPNETCoreParkingApp.Controllers
 {
@@ -11,17 +10,10 @@ namespace ASPNETCoreParkingApp.Controllers
     {
         private readonly IDailyRateRepository _repository;
 
-        public DailyRatesController(ASPNETCoreParkingAppContext context) : this(new DailyRateRepository(context))
+        public DailyRatesController(ASPNETCoreParkingAppContext context) 
         {
-
+            _repository = new DailyRateRepository(context);
         }
-
-        public DailyRatesController(IDailyRateRepository dailyRateRepository)
-        {
-            _repository = dailyRateRepository;
-        }
-
-
 
         // GET: DailyRates
         public async Task<ActionResult> Index()

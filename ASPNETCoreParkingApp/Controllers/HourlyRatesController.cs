@@ -13,18 +13,9 @@ namespace ASPNETCoreParkingApp.Controllers
         /// <summary>
         /// Default controller creates a default repository
         /// </summary>
-        public HourlyRatesController(ASPNETCoreParkingAppContext context) : this(new HourlyRateRepository(context))
+        public HourlyRatesController(ASPNETCoreParkingAppContext context)
         {
-
-        }
-
-        /// <summary>
-        /// Allows for creation with an existing repository
-        /// </summary>
-        /// <param name="flatParkingRateRepository"></param>
-        public HourlyRatesController(IHourlyRateRepository hourlyRateRepository)
-        {
-            _repository = hourlyRateRepository;
+            _repository = new HourlyRateRepository(context);
         }
 
 
