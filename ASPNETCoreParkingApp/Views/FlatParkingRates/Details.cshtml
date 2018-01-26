@@ -1,0 +1,57 @@
+﻿@model ASPNETCoreParkingApp.Models.FlatParkingRate
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FlatParkingRate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryTimeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryTimeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryTimeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryTimeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExitTimeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExitTimeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExitTimeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExitTimeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDaysOfWeek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryDaysOfWeek)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

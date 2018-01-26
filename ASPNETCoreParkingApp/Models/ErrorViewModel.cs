@@ -1,5 +1,3 @@
-using System;
-
 namespace ASPNETCoreParkingApp.Models
 {
     public class ErrorViewModel
