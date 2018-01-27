@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -32,16 +33,16 @@ namespace ASPNETCoreParkingApp.Models
         public string Description { get; set; }
 
         [NotMapped]
-        [Display(Name = "Entry Time Period Start")]
+        [Display(Name = "Entry From")]
         public TimeSpan EntryTimeStart { get; set; }
         [NotMapped]
-        [Display(Name = "Entry Time Period End")]
+        [Display(Name = "Entry To")]
         public TimeSpan EntryTimeEnd { get; set; }
         [NotMapped]
-        [Display(Name = "Exit Time Period Start")]
+        [Display(Name = "Exit From")]
         public TimeSpan ExitTimeStart { get; set; }
         [NotMapped]
-        [Display(Name = "Exit Time Period End")]
+        [Display(Name = "Exit To")]
         public TimeSpan ExitTimeEnd { get; set; }
 
         public long EntryTimeStartTicks
@@ -67,6 +68,8 @@ namespace ASPNETCoreParkingApp.Models
 
         // 1 = Sunday, 2 = Monday, 4 = Tuesday, 8 = Wednesday, 16 = Thursday, 32 = Friday, 64 = Saturday
         public int EntryDays { get; set; }
+
+        [Display(Name = "Cost ($)")]
         public decimal Charge { get; set; }
 
 /*        {
