@@ -1,5 +1,4 @@
 ﻿using ASPNETCoreParkingApp.Models;
-using ASPNETCoreParkingApp.Models.Repositories.implementation;
 using ASPNETCoreParkingApp.Models.Repositories.interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -13,9 +12,9 @@ namespace ASPNETCoreParkingApp.Controllers
         /// <summary>
         /// Default controller creates a default repository
         /// </summary>
-        public HourlyRatesController(ParkingAppContext context)
+        public HourlyRatesController(IHourlyRateRepository repository)
         {
-            _repository = new HourlyRateRepository(context);
+            _repository = repository;
         }
 
 

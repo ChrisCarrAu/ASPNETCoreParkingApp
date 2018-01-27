@@ -1,5 +1,4 @@
 ﻿using ASPNETCoreParkingApp.Models;
-using ASPNETCoreParkingApp.Models.Repositories.implementation;
 using ASPNETCoreParkingApp.Models.Repositories.interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -10,9 +9,9 @@ namespace ASPNETCoreParkingApp.Controllers
     {
         private readonly IDailyRateRepository _repository;
 
-        public DailyRatesController(ParkingAppContext context) 
+        public DailyRatesController(IDailyRateRepository repository) 
         {
-            _repository = new DailyRateRepository(context);
+            _repository = repository;
         }
 
         // GET: DailyRates

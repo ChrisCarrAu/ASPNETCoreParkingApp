@@ -1,8 +1,7 @@
 ﻿using ASPNETCoreParkingApp.Models;
-using ASPNETCoreParkingApp.Models.Repositories.implementation;
 using ASPNETCoreParkingApp.Models.Repositories.interfaces;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace ASPNETCoreParkingApp.Controllers
 {
@@ -17,9 +16,9 @@ namespace ASPNETCoreParkingApp.Controllers
         /// <summary>
         /// Default controller creates a default repository
         /// </summary>
-        public FlatParkingRatesController(ParkingAppContext context)
+        public FlatParkingRatesController(IFlatParkingRateRepository repository)
         {
-            _repository = new FlatParkingRateRepository(context);
+            _repository = repository;
         }
 
         // GET: FlatParkingRates

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using ASPNETCoreParkingApp.Controllers;
+﻿using ASPNETCoreParkingApp.Controllers;
 using ASPNETCoreParkingApp.Models;
 using ASPNETCoreParkingApp.Models.Repositories.interfaces;
 using ASPNETCoreParkingApp.Tests.Models;
 using Microsoft.AspNetCore.Mvc;
-using StoreApp.Tests;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ASPNETCoreParkingApp.Tests.Controllers
@@ -20,7 +19,7 @@ namespace ASPNETCoreParkingApp.Tests.Controllers
             repository.Add(GetFlatParkingRate());
 
             // Arrange
-            var controller = GetFlatParkingRatesController(repository);
+            var controller = new FlatParkingRatesController(repository);
 
             // Act
             var actionResultTask = controller.Index();
@@ -54,14 +53,15 @@ namespace ASPNETCoreParkingApp.Tests.Controllers
             };
         }
 
+        /*
         private static FlatParkingRatesController GetFlatParkingRatesController(IFlatParkingRateRepository repository)
         {
-            FlatParkingRatesController controller = new FlatParkingRatesController(new TestParkingAppContext());
+            FlatParkingRatesController controller = new MockFlatParkingRateRepository();
 
             return controller;
         }
 
-        /*
+        
         private class MockHttpContext : HttpContextBase
         {
             private readonly IPrincipal _user = new GenericPrincipal(
