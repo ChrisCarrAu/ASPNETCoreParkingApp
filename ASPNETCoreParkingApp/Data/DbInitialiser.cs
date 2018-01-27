@@ -6,7 +6,7 @@ namespace ASPNETCoreParkingApp.Data
 {
     public static class DbInitialiser
     {
-        public static void Initialise(ASPNETCoreParkingAppContext context)
+        public static void Initialise(ParkingAppContext context)
         {
             context.Database.EnsureCreated();
 

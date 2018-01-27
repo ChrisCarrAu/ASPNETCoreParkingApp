@@ -10,7 +10,7 @@ namespace ASPNETCoreParkingApp.Controllers
     {
         private readonly IDailyRateRepository _repository;
 
-        public DailyRatesController(ASPNETCoreParkingAppContext context) 
+        public DailyRatesController(ParkingAppContext context) 
         {
             _repository = new DailyRateRepository(context);
         }

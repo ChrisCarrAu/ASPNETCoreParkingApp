@@ -6,9 +6,9 @@ namespace ASPNETCoreParkingApp.Models.Repositories.implementation
 {
     public class DailyRateRepository : IDailyRateRepository
     {
-        private readonly ASPNETCoreParkingAppContext _db;
+        private readonly ParkingAppContext _db;
 
-        public DailyRateRepository(ASPNETCoreParkingAppContext context)
+        public DailyRateRepository(ParkingAppContext context)
         {
             _db = context;
         }

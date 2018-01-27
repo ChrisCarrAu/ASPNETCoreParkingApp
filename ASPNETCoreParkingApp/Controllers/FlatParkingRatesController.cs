@@ -17,7 +17,7 @@ namespace ASPNETCoreParkingApp.Controllers
         /// <summary>
         /// Default controller creates a default repository
         /// </summary>
-        public FlatParkingRatesController(ASPNETCoreParkingAppContext context)
+        public FlatParkingRatesController(ParkingAppContext context)
         {
             _repository = new FlatParkingRateRepository(context);
         }

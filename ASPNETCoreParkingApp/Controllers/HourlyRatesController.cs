@@ -13,7 +13,7 @@ namespace ASPNETCoreParkingApp.Controllers
         /// <summary>
         /// Default controller creates a default repository
         /// </summary>
-        public HourlyRatesController(ASPNETCoreParkingAppContext context)
+        public HourlyRatesController(ParkingAppContext context)
         {
             _repository = new HourlyRateRepository(context);
         }

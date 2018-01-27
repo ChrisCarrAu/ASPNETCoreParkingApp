@@ -6,9 +6,9 @@ namespace ASPNETCoreParkingApp.Models.Repositories.implementation
 {
     public class HourlyRateRepository : IHourlyRateRepository
     {
-        private readonly ASPNETCoreParkingAppContext _db;
+        private readonly ParkingAppContext _db;
 
-        public HourlyRateRepository(ASPNETCoreParkingAppContext context)
+        public HourlyRateRepository(ParkingAppContext context)
         {
             _db = context;
         }

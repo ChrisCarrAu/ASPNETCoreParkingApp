@@ -19,7 +19,7 @@ namespace ASPNETCoreParkingApp
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ASPNETCoreParkingAppContext>();
+                    var context = services.GetRequiredService<ParkingAppContext>();
                     DbInitialiser.Initialise(context);
                 }
                 catch (Exception ex)

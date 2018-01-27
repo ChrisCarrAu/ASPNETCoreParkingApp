@@ -6,9 +6,9 @@ namespace ASPNETCoreParkingApp.Models.Repositories.implementation
 {
     public class FlatParkingRateRepository : IFlatParkingRateRepository
     {
-        private readonly ASPNETCoreParkingAppContext _db;
+        private readonly ParkingAppContext _db;
 
-        public FlatParkingRateRepository(ASPNETCoreParkingAppContext context)
+        public FlatParkingRateRepository(ParkingAppContext context)
         {
             _db = context;
         }
