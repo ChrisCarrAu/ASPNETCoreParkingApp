@@ -1,44 +1,49 @@
 ﻿using ASPNETCoreParkingApp.Controllers;
 using ASPNETCoreParkingApp.Models;
 using ASPNETCoreParkingApp.Models.Repositories.interfaces;
-using ASPNETCoreParkingApp.Tests.Models;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace ASPNETCoreParkingApp.Tests.Controllers
+namespace ASPNETCoreParkingApp.Tests.UnitTests
 {
 
     public class FlatParkingRatesControllerTest
     {
         [Fact]
-        public async Task Index_Get_AsksForIndexViewAsync()
+        public async Task Index_ReturnsAViewResult_WithAListOfFlatParkingRates()
         {
-            var repository = new MockFlatParkingRateRepository();
-            repository.Add(GetFlatParkingRate());
-
             // Arrange
-            var controller = new FlatParkingRatesController(repository);
+            var repository = new Mock<IFlatParkingRateRepository>();
+            var testParkingRates = GetTestFlatParkingRates();
+//            repository.Setup(repo => repo.GetAllFlatParkingRates()).Returns(Task.FromResult(testParkingRates));
+            var controller = new FlatParkingRatesController(repository.Object);
 
             // Act
-            var actionResultTask = controller.Index();
-            actionResultTask.Wait();
-            var viewResult = actionResultTask.Result as ViewResult;
-
+            var result = await controller.Index();
 
             // Assert
-            Assert.NotNull(viewResult);
-            Assert.Equal("Index", viewResult.ViewName);
+            var viewResult = Assert.IsType<ViewResult>(result);
+            /*var model = Assert.IsAssignableFrom<IEnumerable<StormSessionViewModel>>(
+                viewResult.ViewData.Model);
+            Assert.Equal(2, model.Count());
+            */
         }
 
-
-        FlatParkingRate GetFlatParkingRate()
+        private List<FlatParkingRate> GetTestFlatParkingRates()
         {
-            return GetFlatParkingRate(1, "Early Bird", new TimeSpan(6, 0, 0), new TimeSpan(9, 0, 0), new TimeSpan(15, 30, 0), new TimeSpan(23, 30, 0), 64, 13.00m);
+            var rates = new List<FlatParkingRate>()
+            {
+                GetFlatParkingRate(1, "Early Bird", new TimeSpan(6, 0, 0), new TimeSpan(9, 0, 0),
+                    new TimeSpan(15, 30, 0), new TimeSpan(23, 30, 0), 64, 13.00m)
+            };
+            return rates;
         }
 
-        FlatParkingRate GetFlatParkingRate(int id, string description, TimeSpan entryStart, TimeSpan entryEnd, TimeSpan exitStart, TimeSpan exitEnd, int entryDays, decimal charge)
+        private FlatParkingRate GetFlatParkingRate(int id, string description, TimeSpan entryStart, TimeSpan entryEnd, TimeSpan exitStart, TimeSpan exitEnd, int entryDays, decimal charge)
         {
             return new FlatParkingRate
             {

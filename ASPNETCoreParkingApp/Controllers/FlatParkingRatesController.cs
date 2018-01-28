@@ -22,13 +22,13 @@ namespace ASPNETCoreParkingApp.Controllers
         }
 
         // GET: FlatParkingRates
-        public async Task<ActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             return View(_repository.GetAllFlatParkingRates()); //  await db.FlatParkingRates.ToListAsync());
         }
 
         // GET: FlatParkingRates/Details/5
-        public async Task<ActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -53,7 +53,7 @@ namespace ASPNETCoreParkingApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(include: "ID, Description, EntryTimeStart, EntryTimeEnd, ExitTimeStart, ExitTimeEnd, EntryDays, Charge")] FlatParkingRate flatParkingRate)
+        public async Task<IActionResult> Create([Bind(include: "ID, Description, EntryTimeStart, EntryTimeEnd, ExitTimeStart, ExitTimeEnd, EntryDays, Charge")] FlatParkingRate flatParkingRate)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace ASPNETCoreParkingApp.Controllers
         }
 
         // GET: FlatParkingRates/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -84,7 +84,7 @@ namespace ASPNETCoreParkingApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(include: "ID, Description, EntryTimeStart, EntryTimeEnd, ExitTimeStart, ExitTimeEnd, EntryDays, Charge")] FlatParkingRate flatParkingRate)
+        public async Task<IActionResult> Edit([Bind(include: "ID, Description, EntryTimeStart, EntryTimeEnd, ExitTimeStart, ExitTimeEnd, EntryDays, Charge")] FlatParkingRate flatParkingRate)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace ASPNETCoreParkingApp.Controllers
         }
 
         // GET: FlatParkingRates/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -112,7 +112,7 @@ namespace ASPNETCoreParkingApp.Controllers
         // POST: FlatParkingRates/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             FlatParkingRate flatParkingRate = _repository.GetFlatParkingRateByID((int) id); // await db.FlatParkingRates.FindAsync(id);
             _repository.DeleteFlatParkingRate(id);
