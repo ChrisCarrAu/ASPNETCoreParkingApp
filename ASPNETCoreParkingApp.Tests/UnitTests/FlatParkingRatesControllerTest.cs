@@ -29,7 +29,7 @@ namespace ASPNETCoreParkingApp.Tests.UnitTests
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
             var model = Assert.IsAssignableFrom<IEnumerable<FlatParkingRate>>(viewResult.ViewData.Model);
-            Assert.Equal(1, model.Count());
+            Assert.Equal(4, model.Count());
         }
 
         private List<FlatParkingRate> GetTestFlatParkingRates()
@@ -37,7 +37,13 @@ namespace ASPNETCoreParkingApp.Tests.UnitTests
             var rates = new List<FlatParkingRate>()
             {
                 GetFlatParkingRate(1, "Early Bird", new TimeSpan(6, 0, 0), new TimeSpan(9, 0, 0),
-                    new TimeSpan(15, 30, 0), new TimeSpan(23, 30, 0), 64, 13.00m)
+                    new TimeSpan(15, 30, 0), new TimeSpan(23, 30, 0), 62, 13.00m),
+                GetFlatParkingRate(2, "Night Rate", new TimeSpan(18, 0, 0), new TimeSpan(1, 0, 0, 0),
+                    new TimeSpan(18, 0, 0), new TimeSpan(1, 6, 0, 0), 62, 6.50m),
+                GetFlatParkingRate(3, "Weekend Rate", new TimeSpan(0, 0, 0), new TimeSpan(2, 0, 0, 0),
+                    new TimeSpan(0, 0, 0), new TimeSpan(2, 0, 0, 0), 64, 10.00m),
+                GetFlatParkingRate(4, "Weekend Rate", new TimeSpan(0, 0, 0), new TimeSpan(1, 0, 0, 0),
+                    new TimeSpan(0, 0, 0), new TimeSpan(1, 0, 0, 0), 1, 10.00m),
             };
             return rates;
         }
