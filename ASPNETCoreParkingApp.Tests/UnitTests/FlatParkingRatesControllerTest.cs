@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -19,7 +20,7 @@ namespace ASPNETCoreParkingApp.Tests.UnitTests
             // Arrange
             var repository = new Mock<IFlatParkingRateRepository>();
             var testParkingRates = GetTestFlatParkingRates();
-//            repository.Setup(repo => repo.GetAllFlatParkingRates()).Returns(Task.FromResult(testParkingRates));
+            repository.Setup(repo => repo.GetAllFlatParkingRates()).Returns(testParkingRates);
             var controller = new FlatParkingRatesController(repository.Object);
 
             // Act
@@ -27,10 +28,8 @@ namespace ASPNETCoreParkingApp.Tests.UnitTests
 
             // Assert
             var viewResult = Assert.IsType<ViewResult>(result);
-            /*var model = Assert.IsAssignableFrom<IEnumerable<StormSessionViewModel>>(
-                viewResult.ViewData.Model);
-            Assert.Equal(2, model.Count());
-            */
+            var model = Assert.IsAssignableFrom<IEnumerable<FlatParkingRate>>(viewResult.ViewData.Model);
+            Assert.Equal(1, model.Count());
         }
 
         private List<FlatParkingRate> GetTestFlatParkingRates()
